@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>ChitChat</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="./anim.css" rel="stylesheet" type="text/css" />
+  
+  <script rel="preload" type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script rel="preload" nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  
+</head>
+
+<body>
+
+  <!-- Firebase Scripts -->
+	<script  src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
+	<script  src="https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics-compat.js"></script>
+	<script  src="https://www.gstatic.com/firebasejs/9.13.0/firebase-auth-compat.js"></script>
+	<script  src="https://www.gstatic.com/firebasejs/9.13.0/firebase-database-compat.js"></script>
+  <script  src="https://www.gstatic.com/firebasejs/9.13.0/firebase-storage-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBfhVzHqMEtktuWtzgkLQAvov0sCH2WiyM",
+      authDomain: "chitchat-testing-bbfaa.firebaseapp.com",
+      projectId: "chitchat-testing-bbfaa",
+      storageBucket: "chitchat-testing-bbfaa.appspot.com",
+      messagingSenderId: "297674317685",
+      appId: "1:297674317685:web:07e2023be85798630c7d3c",
+      databaseURL: "https://chitchat-testing-bbfaa-default-rtdb.firebaseio.com/",
+    };
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+    var storage = firebase.storage();
+    var storageRef = firebase.storage().ref();
+  </script>
+
+
+  <div class="splash" id="splash">
+    <div class="splash_txt puff-in-center" id="splash_image">ChitChat!</div>
+  </div>
+
+
+  
+
+  <div class="login_overlay" id="login_main_overlay">
+    <div class="container2" id="login_container2">
+      <form id="auth_form">
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email">
+        </div>
+
+        <div class="field">
+          <label for="pass">Password</label>
+          <input id="pass" type="password">
+        </div>
+
+        <div class="button">
+          <button onclick="login()">Login</button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+  <div id="message_div" class="message">
+    <div id="message_txt" class="msg-txt">
+      Hello this is message!
+    </div>
+  </div>
+
+
+  
+  <div class="root">
+    <div class="left" id="left_div">
+      
+      <div class="left_header flex_row">
+        <div id='my_dp' class="dp flex_row all_center"></div>
+        <div class="main_uinfo">
+          <div id="name" class="name"></div>
+          <div class="badge">Alpha User</div>
+        </div>
+      </div>
+
+      
+      <div class="heading">Stories</div>
+      <div class="stories">
+        <div class="story">
+          <div class="story_circle"></div>
+          <div class="uname">Test</div>
+        </div>
+
+        <div class="story">
+          <div class="story_circle"></div>
+          <div class="uname">Test</div>
+        </div>
+
+        <div class="story">
+          <div class="story_circle"></div>
+          <div class="uname">Test</div>
+        </div>
+
+        <div class="story">
+          <div class="story_circle"></div>
+          <div class="uname">Test</div>
+        </div>
+<!--         <div class="story">
+          <div class="story_circle"></div>
+          <div class="uname">hacknetayush</div>
+        </div> -->
+      </div>
+
+
+      <div class="heading">Contacts</div>
+      
+      <div id ="contact_container" class="contact_container">
+        
+<!--         <div class="contact">
+          <div class="dp_contacts"></div>
+          <div class="uinfo">
+            <div class="contact_name">HackNetAyush</div>
+            <div class="lstmsg">Hey, How's yr day</div>
+          </div>
+          <div class="notif">
+            <div class='dot_notif'>1</div>
+          </div>
+        </div> -->
+
+      </div>
+      
+      <div class="nav">
+      </div>
+      
+    </div>
+
+
+
+
+
+    
+    
+    <div class="right" id="right_div">
+      <div class="right_header">
+        <div id="activeID_DP" class="dp_contact_current"></div>
+        <div class="uinfo_current">
+          <div id="activeUname" class="name_current">HackNetAyush</div>
+          <div id="acyiveUstatus" class="status">Typing</div>
+        </div>
+
+        <div class="func_btns" id="func_btns">
+          <div class="vc_btn" id="vc_btn">
+            <ion-icon name="videocam" role="img" class="md hydrated" aria-label="videocam"></ion-icon>
+          </div>
+          <div class="vc_btn" id="call_btn">
+            <ion-icon name="call" role="img" class="md hydrated" aria-label="videocam"></ion-icon>
+          </div>
+        </div>
+
+        <div class="callStatus" id="callStatus">
+          On Call
+        </div>
+        
+      </div>
+      <div class="chat_section">
+        <div id="chats" class="chats">
+<!--           <div class="chat_container 25-01-23" id="id_25-01-23">
+            <div class="other">
+              <div class="txt">Heyy</div>
+            </div>
+            <div class="me">
+              <div class="txt">Hello</div>
+            </div>
+          </div> -->
+        </div>
+        <div class="input_container">
+          <div class="emoji">
+            <ion-icon name="happy"></ion-icon>
+          </div>
+          <div class="txt">
+            <input id="msg_txt" type="text" class="txt_input" placeholder="Your message here...">
+          </div>
+          <div class="send" id="send_btn">
+            <ion-icon name="send"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <script src="script.js"></script>
+</body>
+
+</html>
